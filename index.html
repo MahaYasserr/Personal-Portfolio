@@ -151,6 +151,21 @@ function Hero() {
 
   return (
     <section className="relative overflow-hidden pt-28 pb-24 md:pt-36 md:pb-32">
+
+  {/* HERO BG */}
+  <div className="absolute inset-0 z-0">
+    <img
+      src="imgs/pink.webp"
+      alt=""
+      className="h-full w-full object-cover"
+    />
+  </div>
+
+  {/* OVERLAY */}
+<div className="absolute inset-0 z-10 bg-gradient-to-b from-transparent to-[#FBF4EC]" />
+  {/* CONTENT */}
+  <div className="relative z-20">
+  
       <Blob className="-top-32 -left-24 h-[420px] w-[420px] bg-rose-200/60" />
       <Blob className="-top-10 right-0 h-[360px] w-[360px] bg-amber-200/60" delay={2} />
       <Blob className="bottom-0 left-1/3 h-[300px] w-[300px] bg-violet-200/50" delay={4} />
@@ -193,7 +208,7 @@ function Hero() {
               <_motion.svg viewBox="0 0 200 12" className="absolute -bottom-2 left-0 w-full" initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ delay: 0.9, duration: 0.8 }}>
                 <_motion.path d="M2 8 Q 50 2, 100 6 T 198 4" stroke="#fb7185" strokeWidth="3" strokeLinecap="round" fill="none" />
               </_motion.svg>
-            </span>{" "}— UI/UX Designer crafting thoughtful digital experiences.
+            </span>{" "}, UI/UX Designer crafting thoughtful digital experiences.
           </_motion.h1>
 
           <div className="mt-6 h-8 overflow-hidden">
@@ -223,22 +238,15 @@ function Hero() {
 
         <_motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.8, ease: "easeOut" }} className="relative mx-auto">
           <_motion.div animate={{ y: [-8, 8, -8] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} className="relative">
-            <svg viewBox="0 0 400 400" className="w-72 md:w-96">
-              <defs>
-                <linearGradient id="frameGrad" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0%" stopColor="#fecaca" />
-                  <stop offset="50%" stopColor="#fed7aa" />
-                  <stop offset="100%" stopColor="#fbcfe8" />
-                </linearGradient>
-                <clipPath id="blobClip">
-                  <path d="M325,200 Q360,260 310,310 Q260,360 200,340 Q140,360 90,310 Q40,260 60,200 Q40,140 90,90 Q140,40 200,60 Q260,40 310,90 Q360,140 325,200 Z" />
-                </clipPath>
-              </defs>
-              <path d="M325,200 Q360,260 310,310 Q260,360 200,340 Q140,360 90,310 Q40,260 60,200 Q40,140 90,90 Q140,40 200,60 Q260,40 310,90 Q360,140 325,200 Z" fill="url(#frameGrad)" />
-              <g clipPath="url(#blobClip)">
-                <image href="imgs/selfie.png" x="0" y="0" width="400" height="400" preserveAspectRatio="xMidYMid slice" />
-              </g>
-            </svg>
+            <div className="relative w-120 h-120 md:w-96 md:h-96">
+  <div className="absolute inset-0 bg-gradient-to-br from-rose-200/40 via-orange-100/30 to-pink-200 rounded-[42%]" />
+
+  <img
+    src="./imgs/selfie.png"
+    alt="Maha"
+    className="absolute inset-2 h-[calc(100%-16px)] w-[calc(100%-16px)] object-cover rounded-[42%]"
+  />
+</div>
 
             <FloatingDoodle className="-top-4 -left-6" delay={0.2}>
               <div className="rounded-full bg-white px-3 py-1.5 text-xs font-medium shadow-md ring-1 ring-rose-100">✦ hello!</div>
@@ -249,6 +257,7 @@ function Hero() {
             <FloatingDoodle className="top-1/2 -right-10" delay={0.7}><span className="text-3xl">⭐</span></FloatingDoodle>
           </_motion.div>
         </_motion.div>
+      </div>
       </div>
     </section>
   );
@@ -267,7 +276,7 @@ function About() {
             <div aria-hidden className="absolute inset-0 -z-10 bg-cover bg-center" style={{ backgroundImage: "url('watercolor.jpg')" }} />
             <div aria-hidden className="absolute inset-0 -z-10 bg-white/55 backdrop-blur-[2px]" />
             <div className="mb-3 text-2xl"></div>
-            <h3 className="font-display text-2xl font-bold text-stone-800">Hi, I'm Maha — based in Alexandria</h3>
+            <h3 className="font-display text-2xl font-bold text-stone-800">Hi, I'm Maha based in Alexandria</h3>
             <p className="mt-4 text-stone-700 leading-relaxed">
               For the past <span className="font-semibold text-rose-500">3 years</span> I've been shaping products that feel personal, warm, and a little playful. I believe the best interfaces disappear into the experience leaving people with the soft feeling that someone, somewhere, really cared.
             </p>
