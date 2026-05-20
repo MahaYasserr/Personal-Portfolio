@@ -6,6 +6,7 @@
   <title>Maha ✿ UI/UX Designer</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <script>
     tailwind.config = {
       theme: {
@@ -39,6 +40,32 @@ const _AnimatePresence = M.AnimatePresence;
 const _useScroll = M.useScroll;
 const _useTransform = M.useTransform;
 
+// ──────────────────────────────────────────────────────────
+// Font Awesome icon set (keeps the same API as before)
+// Each icon renders <i> with the matching FA class.
+// `size` is converted to inline font-size in px.
+// ──────────────────────────────────────────────────────────
+const FaIcon = ({ icon, size = 16, className = "" }) => (
+  <i className={`${icon} ${className}`} style={{ fontSize: `${size}px`, lineHeight: 1 }} aria-hidden="true" />
+);
+
+const Icon = {
+  Sparkle:      (p) => <FaIcon {...p} icon="fa-solid fa-wand-magic-sparkles" />,
+  Flower:       (p) => <FaIcon {...p} icon="fa-solid fa-fan" />,
+  ArrowUpRight: (p) => <FaIcon {...p} icon="fa-solid fa-arrow-up-right-from-square" />,
+  ArrowRight:   (p) => <FaIcon {...p} icon="fa-solid fa-arrow-right" />,
+  Star:         (p) => <FaIcon {...p} icon="fa-solid fa-star" />,
+  Search:       (p) => <FaIcon {...p} icon="fa-solid fa-magnifying-glass" />,
+  Handshake:    (p) => <FaIcon {...p} icon="fa-solid fa-handshake" />,
+  Gem:          (p) => <FaIcon {...p} icon="fa-solid fa-gem" />,
+  Coffee:       (p) => <FaIcon {...p} icon="fa-solid fa-mug-hot" />,
+  Type:         (p) => <FaIcon {...p} icon="fa-solid fa-font" />,
+  Cat:          (p) => <FaIcon {...p} icon="fa-solid fa-cat" />,
+  Keyboard:     (p) => <FaIcon {...p} icon="fa-solid fa-keyboard" />,
+  Linkedin:     (p) => <FaIcon {...p} icon="fa-brands fa-linkedin-in" />,
+  Behance:      (p) => <FaIcon {...p} icon="fa-brands fa-behance" />,
+};
+
 const ROLES = [
   "UI Designer",
   "UX Thinker",
@@ -48,7 +75,7 @@ const ROLES = [
 
 const PROJECTS = [
   {
-    title: "ADCB mobile app — Unofficial Case Study",
+    title: "ADCB mobile app, Unofficial Case Study",
     tags: ["Mobile App", "UI Design", "UX Research"],
     desc: "A more human-centered redesign of a banking app for the EG market.",
     grad: "from-rose-200 via-orange-100 to-amber-100",
@@ -64,7 +91,7 @@ const PROJECTS = [
     behanceUrl: "https://www.behance.net/gallery/243783123/Identity-Digital-marketing-agency",
   },
   {
-    title: "Tap cab — Personal Travel app",
+    title: "Tap cab, Personal Travel app",
     tags: ["apps", "maps", "UX"],
     desc: "Personal travel analytics with playful map visualizations.",
     grad: "from-violet-200 via-pink-100 to-rose-100",
@@ -72,29 +99,26 @@ const PROJECTS = [
     behanceUrl: "https://www.behance.net/gallery/226260399/TapCab-UIUX-Project",
   },
   {
-    title: "Toro Sushi- sushi restaurant website design",
+    title: "Toro Sushi, sushi restaurant website design",
     tags: ["SaaS", "Product Design"],
     desc: "A sushi restaurant website with a modern, vibrant design.",
     grad: "from-orange-200 via-amber-100 to-yellow-100",
     image: "imgs/img04.png",
     behanceUrl: "https://www.behance.net/gallery/247307725/Toro-Sushi",
   },
-  
-  
 ];
 
 const TOOLS = [
-  { name: "Figma", level: 95, color: "bg-rose-300", icon: "✦" },
-  { name: "Adobe Illustrator", level: 80, color: "bg-pink-300", icon: "◆" },
-  { name: "Photoshop", level: 85, color: "bg-amber-300", icon: "❀" },
-
+  { name: "Figma", level: 95, color: "bg-rose-300", Icon: Icon.Sparkle },
+  { name: "Adobe Illustrator", level: 80, color: "bg-pink-300", Icon: Icon.Gem },
+  { name: "Photoshop", level: 85, color: "bg-amber-300", Icon: Icon.Flower },
 ];
 
 const FUN_FACTS = [
-  { q: "Tea per design ☕", a: "About 2.5  but who's counting?" },
-  { q: "Favorite font 🅰️", a: "Anything with friendly round terminals." },
-  { q: "Loudest critique partner 🐱", a: "My cat, Max. Brutal but fair." },
-  { q: "Most used Figma shortcut ⌨️", a: "⌘ + D, naturally." },
+  { q: "Tea per design", a: "About 2.5, but who's counting?", Icon: Icon.Coffee },
+  { q: "Favorite font", a: "Anything with friendly round terminals.", Icon: Icon.Type },
+  { q: "Loudest critique partner", a: "My cat, Max. Brutal but fair.", Icon: Icon.Cat },
+  { q: "Most used Figma shortcut", a: "⌘ + D, naturally.", Icon: Icon.Keyboard },
 ];
 
 const GrainOverlay = () => (
@@ -115,12 +139,6 @@ const FloatingDoodle = ({ children, className, delay = 0, range = 10 }) => (
     transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay }}>
     {children}
   </_motion.div>
-);
-
-const Sparkle = ({ size = 16, className = "" }) => (
-  <svg viewBox="0 0 24 24" width={size} height={size} className={className} fill="currentColor">
-    <path d="M12 1l2.5 7.5L22 11l-7.5 2.5L12 21l-2.5-7.5L2 11l7.5-2.5L12 1z" />
-  </svg>
 );
 
 const SectionTitle = ({ kicker, title, sub }) => (
@@ -170,10 +188,10 @@ function Hero() {
       <Blob className="-top-10 right-0 h-[360px] w-[360px] bg-amber-200/60" delay={2} />
       <Blob className="bottom-0 left-1/3 h-[300px] w-[300px] bg-violet-200/50" delay={4} />
 
-      <FloatingDoodle className="top-24 left-10 text-rose-400" delay={0.2}><Sparkle size={28} /></FloatingDoodle>
-      <FloatingDoodle className="top-40 right-16 text-amber-400" delay={1.1} range={14}><Sparkle size={20} /></FloatingDoodle>
-      <FloatingDoodle className="bottom-24 left-1/4 text-violet-400" delay={0.6}><span className="text-3xl">✿</span></FloatingDoodle>
-      <FloatingDoodle className="top-1/2 right-1/4 text-pink-400" delay={1.6}><span className="text-2xl">↗</span></FloatingDoodle>
+      <FloatingDoodle className="top-24 left-10 text-rose-400" delay={0.2}><Icon.Sparkle size={28} /></FloatingDoodle>
+      <FloatingDoodle className="top-40 right-16 text-amber-400" delay={1.1} range={14}><Icon.Sparkle size={20} /></FloatingDoodle>
+      <FloatingDoodle className="bottom-24 left-1/4 text-violet-400" delay={0.6}><Icon.Flower size={28} /></FloatingDoodle>
+      <FloatingDoodle className="top-1/2 right-1/4 text-pink-400" delay={1.6}><Icon.ArrowUpRight size={24} /></FloatingDoodle>
 
       <FloatingDoodle className="top-32 right-[8%] hidden md:block" delay={0.3} range={8}>
         <div className="rotate-6 rounded-2xl bg-white/80 backdrop-blur p-3 shadow-lg ring-1 ring-rose-100">
@@ -189,7 +207,7 @@ function Hero() {
       <FloatingDoodle className="bottom-20 right-[14%] hidden md:block" delay={1.4} range={10}>
         <div className="-rotate-6 rounded-2xl bg-gradient-to-br from-rose-100 to-amber-100 p-3 shadow-lg">
           <div className="text-xs font-semibold text-rose-500">cursor.fig</div>
-          <div className="mt-1 text-[10px] text-stone-500">moving with intention →</div>
+          <div className="mt-1 flex items-center gap-1 text-[10px] text-stone-500">moving with intention <Icon.ArrowRight size={10} /></div>
         </div>
       </FloatingDoodle>
 
@@ -213,25 +231,25 @@ function Hero() {
 
           <div className="mt-6 h-8 overflow-hidden">
             <_AnimatePresence mode="wait">
-              <_motion.div key={roleIdx} initial={{ y: 30, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: -30, opacity: 0 }} transition={{ duration: 0.4 }} className="text-lg text-stone-500">
-                ✦ {ROLES[roleIdx]}
+              <_motion.div key={roleIdx} initial={{ y: 30, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: -30, opacity: 0 }} transition={{ duration: 0.4 }} className="flex items-center gap-2 text-lg text-stone-500">
+                <Icon.Sparkle size={16} className="text-rose-400" /> {ROLES[roleIdx]}
               </_motion.div>
             </_AnimatePresence>
           </div>
 
           <_motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }} className="mt-8 flex flex-wrap gap-4">
             <a href="#projects" className="group relative inline-flex items-center gap-2 rounded-full bg-stone-800 px-7 py-3.5 text-sm font-medium text-white shadow-lg shadow-stone-800/20 transition hover:-translate-y-0.5 hover:shadow-xl">
-              View Projects <span className="transition group-hover:translate-x-1">→</span>
+              View Projects <span className="transition group-hover:translate-x-1"><Icon.ArrowRight size={16} /></span>
             </a>
             <a href="#contact" className="inline-flex items-center gap-2 rounded-full bg-white/80 backdrop-blur px-7 py-3.5 text-sm font-medium text-stone-700 ring-1 ring-stone-200 shadow-sm transition hover:-translate-y-0.5 hover:bg-white">
-              Contact Me ✨
+              Contact Me <Icon.Sparkle size={14} className="text-rose-400" />
             </a>
             <a href="https://drive.google.com/file/d/1mSAqvgL6oecNkEKBibCQaytX_fOPvyIK/view?usp=sharing"
   target="_blank"
   rel="noopener noreferrer"
   className="inline-flex items-center gap-2 rounded-full bg-white/80 backdrop-blur px-7 py-3.5 text-sm font-medium text-stone-700 ring-1 ring-stone-200 shadow-sm transition hover:-translate-y-0.5 hover:bg-white"
 >
-  Resume ✨
+  Resume <Icon.ArrowUpRight size={14} className="text-rose-400" />
 </a>
           </_motion.div>
         </div>
@@ -251,12 +269,16 @@ function Hero() {
 </div>
 
             <FloatingDoodle className="-top-4 -left-6" delay={0.2}>
-              <div className="rounded-full bg-white px-3 py-1.5 text-xs font-medium shadow-md ring-1 ring-rose-100">✦ hello!</div>
+              <div className="flex items-center gap-1.5 rounded-full bg-white px-3 py-1.5 text-xs font-medium shadow-md ring-1 ring-rose-100">
+                <Icon.Sparkle size={12} className="text-rose-400" /> hello!
+              </div>
             </FloatingDoodle>
             <FloatingDoodle className="-bottom-2 -right-2" delay={1.2}>
-              <div className="rounded-2xl bg-violet-200/80 backdrop-blur px-3 py-2 text-xs font-medium text-violet-700 shadow-md">↳ pixel-perfect</div>
+              <div className="flex items-center gap-1.5 rounded-2xl bg-violet-200/80 backdrop-blur px-3 py-2 text-xs font-medium text-violet-700 shadow-md">
+                <Icon.ArrowRight size={12} /> pixel-perfect
+              </div>
             </FloatingDoodle>
-            <FloatingDoodle className="top-1/2 -right-10" delay={0.7}><span className="text-3xl">⭐</span></FloatingDoodle>
+            <FloatingDoodle className="top-1/2 -right-10" delay={0.7}><Icon.Star size={28} className="text-amber-400" /></FloatingDoodle>
           </_motion.div>
         </_motion.div>
       </div>
@@ -266,10 +288,15 @@ function Hero() {
 }
 
 function About() {
+  const aboutTraits = [
+    { label: "Curious researcher", desc: "I love the messy middle of discovery.", Ico: Icon.Search },
+    { label: "Calm collaborator", desc: "Good design happens in good conversation.", Ico: Icon.Handshake },
+    { label: "Detail-obsessed", desc: "Every pixel earns its place.", Ico: Icon.Gem },
+  ];
   return (
     <section id="about" className="relative px-6 py-24">
       <Blob className="top-20 -right-20 h-72 w-72 bg-pink-200/50" />
-      <FloatingDoodle className="top-10 left-10 text-amber-300" delay={0.5}><Sparkle size={22} /></FloatingDoodle>
+      <FloatingDoodle className="top-10 left-10 text-amber-300" delay={0.5}><Icon.Sparkle size={22} /></FloatingDoodle>
       <div className="mx-auto max-w-6xl">
         <SectionTitle kicker="ABOUT ME" title="A little about my craft" sub="I design with empathy, curiosity, and a soft spot for delightful details." />
         <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
@@ -277,7 +304,6 @@ function About() {
             className="relative md:col-span-2 overflow-hidden rounded-3xl p-8 shadow-[0_20px_60px_-15px_rgba(251,113,133,0.25)] ring-1 ring-white">
             <div aria-hidden className="absolute inset-0 -z-10 bg-cover bg-center" style={{ backgroundImage: "url('watercolor.jpg')" }} />
             <div aria-hidden className="absolute inset-0 -z-10 bg-white/55 backdrop-blur-[2px]" />
-            <div className="mb-3 text-2xl"></div>
             <h3 className="font-display text-2xl font-bold text-stone-800">Hi, I'm Maha based in Alexandria</h3>
             <p className="mt-4 text-stone-700 leading-relaxed">
               For the past <span className="font-semibold text-rose-500">3 years</span> I've been shaping products that feel personal, warm, and a little playful. I believe the best interfaces disappear into the experience leaving people with the soft feeling that someone, somewhere, really cared.
@@ -299,14 +325,14 @@ function About() {
             <div className="mt-1 text-stone-600">cups of Tea</div>
           </_motion.div>
 
-          {["Curious researcher", "Calm collaborator", "Detail-obsessed"].map((t, i) => (
-            <_motion.div key={t} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} whileHover={{ y: -4, rotate: i % 2 ? 1 : -1 }}
+          {aboutTraits.map((t, i) => (
+            <_motion.div key={t.label} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} whileHover={{ y: -4, rotate: i % 2 ? 1 : -1 }}
               className="rounded-3xl bg-white/80 backdrop-blur p-6 shadow-sm ring-1 ring-rose-100">
-              <div className="text-2xl mb-2">{["🔍","🤝","✨"][i]}</div>
-              <div className="font-display font-bold text-stone-800">{t}</div>
-              <div className="mt-1 text-sm text-stone-500">
-                {["I love the messy middle of discovery.","Good design happens in good conversation.","Every pixel earns its place."][i]}
+              <div className="mb-3 inline-flex items-center justify-center h-10 w-10 rounded-2xl bg-rose-100 text-rose-500">
+                <t.Ico size={20} />
               </div>
+              <div className="font-display font-bold text-stone-800">{t.label}</div>
+              <div className="mt-1 text-sm text-stone-500">{t.desc}</div>
             </_motion.div>
           ))}
         </div>
@@ -321,7 +347,7 @@ function Projects() {
       <Blob className="top-40 left-0 h-80 w-80 bg-amber-200/50" />
       <Blob className="bottom-10 right-0 h-80 w-80 bg-violet-200/40" delay={2} />
       <FloatingDoodle className="top-20 right-20 text-rose-300" delay={0.5}>
-        <span className="text-3xl">✿</span>
+        <Icon.Flower size={32} />
       </FloatingDoodle>
 
       <div className="mx-auto max-w-6xl">
@@ -361,7 +387,7 @@ function Projects() {
                   <p className="mt-2 text-sm text-stone-500">{p.desc}</p>
                 </div>
                 <_motion.div className="shrink-0 rounded-full bg-stone-800 p-3 text-white" whileHover={{ rotate: -45 }}>
-                  ↗
+                  <Icon.ArrowUpRight size={16} />
                 </_motion.div>
               </div>
 
@@ -374,7 +400,7 @@ function Projects() {
               </div>
 
               <div className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-stone-700 transition group-hover:gap-3">
-                View on Behance <span>→</span>
+                View on Behance <Icon.ArrowRight size={14} />
               </div>
             </_motion.a>
           ))}
@@ -387,17 +413,17 @@ function Projects() {
 function Skills() {
   return (
     <section id="skills" className="relative px-6 py-24">
-      <FloatingDoodle className="top-16 left-1/4 text-violet-300" delay={0.2}><Sparkle size={18} /></FloatingDoodle>
-      <FloatingDoodle className="bottom-16 right-1/4 text-amber-300" delay={1}><Sparkle size={24} /></FloatingDoodle>
+      <FloatingDoodle className="top-16 left-1/4 text-violet-300" delay={0.2}><Icon.Sparkle size={18} /></FloatingDoodle>
+      <FloatingDoodle className="bottom-16 right-1/4 text-amber-300" delay={1}><Icon.Sparkle size={24} /></FloatingDoodle>
       <div className="mx-auto max-w-5xl">
-        <SectionTitle kicker="MY TOOLKIT" title="Tools I love" sub="The little kit I keep close — though craft beats software every time." />
+        <SectionTitle kicker="MY TOOLKIT" title="Tools I love" sub="The little kit I keep close, though craft beats software every time." />
         <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
           {TOOLS.map((t, i) => (
             <_motion.div key={t.name} initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.07 }} whileHover={{ y: -6, rotate: i % 2 ? 2 : -2 }}
               className="relative overflow-hidden rounded-3xl bg-white/80 backdrop-blur p-6 shadow-md ring-1 ring-white">
               <div className="flex items-center justify-between">
                 <div className="font-display text-lg font-bold text-stone-800">{t.name}</div>
-                <_motion.span className="text-2xl text-rose-400" animate={{ rotate: 360 }} transition={{ duration: 12, repeat: Infinity, ease: "linear" }}>{t.icon}</_motion.span>
+                <_motion.span className="text-rose-400" animate={{ rotate: 360 }} transition={{ duration: 12, repeat: Infinity, ease: "linear" }}><t.Icon size={22} /></_motion.span>
               </div>
               <div className="mt-4 h-2 overflow-hidden rounded-full bg-stone-100">
                 <_motion.div initial={{ width: 0 }} whileInView={{ width: `${t.level}%` }} viewport={{ once: true }} transition={{ duration: 1.1, ease: "easeOut" }} className={`h-full rounded-full ${t.color}`} />
@@ -406,6 +432,129 @@ function Skills() {
             </_motion.div>
           ))}
         </div>
+      </div>
+    </section>
+  );
+}
+
+// ──────────────────────────────────────────────────────────
+// Meet Max — a small teasing intro to Maha's cat
+// ──────────────────────────────────────────────────────────
+function MeetMax() {
+  return (
+    <section id="max" className="relative px-6 py-24">
+      <Blob className="top-0 -left-10 h-80 w-80 bg-amber-200/40" />
+      <Blob className="bottom-0 right-0 h-80 w-80 bg-rose-200/40" delay={2} />
+      <FloatingDoodle className="top-16 right-24 text-rose-300" delay={0.4}><Icon.Sparkle size={20} /></FloatingDoodle>
+      <FloatingDoodle className="bottom-20 left-20 text-amber-300" delay={1.1}><Icon.Flower size={22} /></FloatingDoodle>
+
+      <div className="mx-auto max-w-6xl">
+        <_motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="relative overflow-hidden rounded-[36px] bg-gradient-to-br from-rose-100 via-orange-50 to-amber-100 p-8 md:p-12 shadow-[0_30px_80px_-20px_rgba(251,113,133,0.3)] ring-1 ring-white"
+        >
+          {/* Decorative paw-print dots */}
+          <div aria-hidden className="pointer-events-none absolute -top-6 -right-6 h-40 w-40 rounded-full bg-white/40 blur-2xl" />
+          <div aria-hidden className="pointer-events-none absolute -bottom-10 -left-10 h-48 w-48 rounded-full bg-rose-200/50 blur-3xl" />
+
+          <div className="grid grid-cols-1 items-center gap-10 md:grid-cols-5">
+            {/* Image */}
+            <_motion.div
+              initial={{ opacity: 0, scale: 0.92, rotate: -3 }}
+              whileInView={{ opacity: 1, scale: 1, rotate: -2 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              whileHover={{ rotate: 0, scale: 1.02 }}
+              className="relative md:col-span-2 mx-auto w-full max-w-sm"
+            >
+              <div className="absolute inset-0 -translate-x-3 translate-y-3 rounded-[32px] bg-rose-300/40" />
+              <div className="relative overflow-hidden rounded-[32px] bg-white p-3 shadow-xl ring-1 ring-rose-100">
+                <img
+                  src="imgs/max.jpg"
+                  alt="Max, Maha's cat, chief design critic"
+                  className="aspect-[4/5] w-full rounded-[24px] object-cover"
+                  onError={(e) => { e.currentTarget.src = "imgs/max.png"; }}
+                />
+              </div>
+
+              {/* Floating tag */}
+              <_motion.div
+                animate={{ y: [-6, 6, -6], rotate: [-2, 2, -2] }}
+                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute -top-4 -right-4 flex items-center gap-1.5 rounded-full bg-stone-800 px-3 py-1.5 text-xs font-medium text-white shadow-lg"
+              >
+                <Icon.Cat size={14} /> Chief Critic
+              </_motion.div>
+
+              <_motion.div
+                animate={{ y: [6, -6, 6] }}
+                transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute -bottom-3 -left-3 rounded-2xl bg-white px-3 py-1.5 text-xs font-medium text-rose-500 shadow-md ring-1 ring-rose-100"
+              >
+                est. forever
+              </_motion.div>
+            </_motion.div>
+
+            {/* Copy */}
+            <div className="md:col-span-3">
+              <_motion.span
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="inline-flex items-center gap-2 rounded-full bg-white/80 backdrop-blur px-4 py-1 text-xs font-medium tracking-widest text-rose-500 shadow-sm"
+              >
+                <Icon.Cat size={12} /> MEET THE TEAM
+              </_motion.span>
+
+              <_motion.h2
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className="mt-4 font-display text-4xl md:text-5xl font-bold tracking-tight text-stone-800"
+              >
+                This is Max.
+              </_motion.h2>
+
+              <_motion.p
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.15 }}
+                className="mt-5 text-stone-700 leading-relaxed"
+              >
+                He's the unpaid <span className="font-semibold text-rose-500">design critic</span> of the studio, perched on the keyboard during every late-night Figma session, deleting frames with a single, confident paw. He has strong opinions about spacing, an even stronger opinion about dinner being five minutes late, and a 100% rejection rate on artboards left open overnight.
+              </_motion.p>
+
+              <_motion.p
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.3 }}
+                className="mt-3 text-stone-600 italic"
+              >
+                If a design survives Max, it's probably ready to ship.
+              </_motion.p>
+
+              {/* Stat chips */}
+              <div className="mt-7 flex flex-wrap gap-3">
+                {[
+                  { k: "Naps / day", v: "14" },
+                  { k: "Layers deleted", v: "∞" },
+                  { k: "Critique style", v: "Direct" },
+                ].map((s) => (
+                  <div key={s.k} className="rounded-2xl bg-white/80 backdrop-blur px-4 py-2.5 ring-1 ring-rose-100 shadow-sm">
+                    <div className="font-display text-xl font-bold text-stone-800">{s.v}</div>
+                    <div className="text-[11px] uppercase tracking-wider text-stone-500">{s.k}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </_motion.div>
       </div>
     </section>
   );
@@ -420,9 +569,14 @@ function FunFacts() {
         <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
           {FUN_FACTS.map((f, i) => (
             <_motion.div key={f.q} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }} whileHover={{ y: -6, rotate: i % 2 ? -1 : 1 }}
-              className={`rounded-3xl p-7 shadow-md ring-1 ring-white backdrop-blur ${i % 2 === 0 ? "bg-gradient-to-br from-rose-100 to-amber-50" : "bg-gradient-to-br from-violet-100 to-pink-50"}`}>
-              <div className="font-display text-lg font-bold text-stone-800">{f.q}</div>
-              <div className="mt-2 text-stone-600">{f.a}</div>
+              className={`flex items-start gap-4 rounded-3xl p-7 shadow-md ring-1 ring-white backdrop-blur ${i % 2 === 0 ? "bg-gradient-to-br from-rose-100 to-amber-50" : "bg-gradient-to-br from-violet-100 to-pink-50"}`}>
+              <div className={`shrink-0 inline-flex h-12 w-12 items-center justify-center rounded-2xl ${i % 2 === 0 ? "bg-rose-200/70 text-rose-600" : "bg-violet-200/70 text-violet-600"}`}>
+                <f.Icon size={22} />
+              </div>
+              <div>
+                <div className="font-display text-lg font-bold text-stone-800">{f.q}</div>
+                <div className="mt-2 text-stone-600">{f.a}</div>
+              </div>
             </_motion.div>
           ))}
         </div>
@@ -440,31 +594,30 @@ function Contact() {
         style={{ backgroundSize: "200% 200%" }} />
       <Blob className="-top-20 left-10 h-80 w-80 bg-pink-300/40" />
       <Blob className="bottom-0 right-10 h-72 w-72 bg-amber-300/40" delay={2} />
-      <FloatingDoodle className="top-16 right-1/4 text-white/80" delay={0.4}><Sparkle size={30} /></FloatingDoodle>
-      <FloatingDoodle className="bottom-16 left-1/4 text-rose-500" delay={1.2}><span className="text-4xl">✿</span></FloatingDoodle>
+      <FloatingDoodle className="top-16 right-1/4 text-white/80" delay={0.4}><Icon.Sparkle size={30} /></FloatingDoodle>
+      <FloatingDoodle className="bottom-16 left-1/4 text-rose-500" delay={1.2}><Icon.Flower size={36} /></FloatingDoodle>
 
       <div className="relative mx-auto max-w-3xl text-center">
         <_motion.div initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }}
           className="inline-block rounded-full bg-white/80 backdrop-blur px-4 py-1 text-xs tracking-widest text-rose-500 shadow">LET'S TALK</_motion.div>
         <_motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
           className="mt-6 font-display text-4xl md:text-6xl font-bold text-stone-800 leading-tight">
-          Let's create something <br /> meaningful together ✨
+          Let's create something <br /> meaningful together <Icon.Sparkle size={36} className="inline-block text-rose-500 align-middle" />
         </_motion.h2>
         <_motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.2 }}
           className="mx-auto mt-5 max-w-lg text-stone-600">
           I'm always happy to hear about cozy ideas, ambitious products, or coffee recommendations. Reach out I reply instantly.
         </_motion.p>
         <_motion.a initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.3 }} whileHover={{ y: -3 }}
-          href="mailto:hello@mayadesigns.co"
+          href="mailto:mahayasser48@gmail.com"
           className="mt-8 inline-flex items-center gap-3 rounded-full bg-stone-800 px-8 py-4 text-white shadow-xl shadow-stone-800/20">
-          mahayasser48@gmail.com <span>→</span>
+          mahayasser48@gmail.com <Icon.ArrowRight size={16} />
         </_motion.a>
 
         <div className="mt-12 flex flex-wrap items-center justify-center gap-3">
   {[
-    { name: "LinkedIn", icon: "in", url: "https://www.linkedin.com/in/maha-yasser/" },
-    { name: "Behance", icon: "Be", url: "https://www.behance.net/itsmaha" },
-
+    { name: "LinkedIn", Ico: Icon.Linkedin, url: "https://www.linkedin.com/in/maha-yasser/" },
+    { name: "Behance", text: "Be", url: "https://www.behance.net/itsmaha" },
   ].map((s, i) => (
     <_motion.a
       key={s.name}
@@ -478,12 +631,14 @@ function Contact() {
       whileHover={{ y: -4, rotate: i % 2 ? 2 : -2 }}
       className="flex items-center gap-2 rounded-full bg-white/80 backdrop-blur px-5 py-2.5 text-sm font-medium text-stone-700 shadow ring-1 ring-white"
     >
-      <span className="font-bold text-rose-500">{s.icon}</span> {s.name}
+      <span className="font-bold text-rose-500">
+        {s.Ico ? <s.Ico size={16} /> : s.text}
+      </span> {s.name}
     </_motion.a>
   ))}
 </div>
 
-        <div className="mt-16 text-sm text-stone-500">© 2026 Maha designed & built with Tea and care.</div>
+        <div className="mt-16 text-sm text-stone-500">© 2026 Maha, designed & built with Tea and care.</div>
       </div>
     </section>
   );
@@ -493,8 +648,10 @@ function Nav() {
   return (
     <nav className="fixed top-4 left-1/2 z-50 -translate-x-1/2 rounded-full bg-white/70 backdrop-blur-xl px-3 py-2 shadow-lg ring-1 ring-white">
       <div className="flex items-center gap-1 text-sm">
-        <span className="px-3 font-display font-bold text-stone-800">Maha ✿</span>
-        {["about","projects","skills","contact"].map((id) => (
+        <span className="flex items-center gap-1.5 px-3 font-display font-bold text-stone-800">
+          Maha <Icon.Flower size={14} className="text-rose-400" />
+        </span>
+        {["about","projects","skills","max","contact"].map((id) => (
           <a key={id} href={`#${id}`} className="rounded-full px-3 py-1.5 text-stone-600 capitalize transition hover:bg-rose-100 hover:text-rose-600">{id}</a>
         ))}
       </div>
@@ -511,6 +668,7 @@ function Portfolio() {
       <About />
       <Projects />
       <Skills />
+      <MeetMax />
       <FunFacts />
       <Contact />
     </div>
